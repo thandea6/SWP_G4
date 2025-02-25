@@ -25,11 +25,11 @@
                         </ul>
                     </div>
                     <div class="grid__column-2-4">
-                        <h3 style="margin-left: 100px" class="footer-heading">Về Shoe Shop</h3>
+                        <h3 style="margin-left: 100px" class="footer-heading">Về Shop</h3>
                         <ul style="margin-left: 100px" class="footer-list-link">
-                            <li class="footer-list-link-item"><a href="" class="footer-link">Giới thiệu về Shoe Shop Việt Nam</a></li>
+                            <li class="footer-list-link-item"><a href="" class="footer-link">Giới thiệu về Shop</a></li>
                             <li class="footer-list-link-item"><a href="" class="footer-link">Tuyển dụng</a></li>
-                            <li class="footer-list-link-item"><a href="" class="footer-link">Điều khoản của Shoe Shop</a></li>
+                            <li class="footer-list-link-item"><a href="" class="footer-link">Điều khoản của Shop</a></li>
                         </ul>
                     </div>
                     <div class="grid__column-2-4">
@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                     <div class="grid__column-2-4">
-                        <h3 style="margin-left: 100px" class="footer-heading">Vào cửa hàng trên ứng dụng Shoe Shop</h3>
+                        <h3 style="margin-left: 100px" class="footer-heading">Vào cửa hàng trên ứng dụng Shop</h3>
                         <div class="footer-img">
                             <div class="footer-qr" style="margin-left: 100px">
                                 <img src="assets\img\qr_code.png" alt="" class="footer-qr-download">
@@ -84,7 +84,7 @@
                                     <img src="assets\img\dangky.png" alt="" class="footer-img-dangky-link">
                                 </div>
                                 <div class="footer-name-cty">
-                                    Công ty TNHH Shoe Shop
+                                    Công ty TNHH Shop
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                     </div>
                     <div class="grid__row">
                         <div class="grid__column-2-4"></div>  
-                        <div class="footer-name-banquyen">© 2021 - Bản quyền thuộc về Công ty TNHH Shoe Shop</div>
+                        <div class="footer-name-banquyen">© 2021 - Bản quyền thuộc về Công ty TNHH Shop</div>
                     </div>
                 </div>
             </div>

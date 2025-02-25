@@ -848,4 +848,96 @@ public class ShopProductDAO extends DBContext{
 
         return list;
     }
+    
+    public List<ShopProduct> getShopProductsByShop(int sid) {
+        List<ShopProduct> list = new ArrayList<>();
+        String sql = """
+                     SELECT 
+                         sp.*,
+                         pl.*,
+                         c.*,
+                         b.*,
+                         s.*,
+                         COALESCE(dis.promotionalPrice, 0) AS discountPrice,
+                         COALESCE(dis.discountValue, 0) AS discountValue,
+                         COALESCE(r.averageRating, 0) AS averageRating,
+                         COALESCE(od.totalSold, 0) AS totalSold
+                     FROM 
+                         shopProduct sp
+                     JOIN 
+                         productLine pl ON sp.productLineId = pl.productLineId
+                     JOIN 
+                         category c ON pl.categoryId = c.categoryId
+                     JOIN 
+                         brand b ON pl.brandId = b.brandId
+                     JOIN 
+                         shop s ON sp.shopId = s.shopId
+                     LEFT JOIN 
+                         discount dis ON dis.shopProductId = sp.id 
+                         AND GETDATE() >= dis.startDate AND GETDATE() <= dis.endDate
+                     LEFT JOIN 
+                         (SELECT shopProductId, AVG(starRating) AS averageRating 
+                          FROM rating 
+                          GROUP BY shopProductId) r ON r.shopProductId = sp.id
+                     LEFT JOIN 
+                         (SELECT 
+                             sp.id AS shopProductId,
+                             SUM(od.quantity) AS totalSold
+                          FROM 
+                             orderDetail od
+                          JOIN 
+                             productItem pi ON od.productItemId = pi.productItemId
+                          JOIN 
+                             shopProduct sp ON pi.shopProductId = sp.id
+                          WHERE 
+                             od.statusId = 3
+                          GROUP BY 
+                             sp.id
+                         ) od ON od.shopProductId = sp.id
+                     WHERE 
+                         s.shopId = ? and sp.is_deleted = 0
+                     """;
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, sid);
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int shopId = rs.getInt("shopId");
+                int productLineId = rs.getInt("productLineId");
+                double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                Date createdAt = rs.getDate("created_at");
+                Date updatedAt = rs.getDate("updated_at");
+                boolean isDeleted = rs.getBoolean("is_deleted");
+                int averageRating = rs.getInt("averageRating");
+                int discount = rs.getInt("discountValue");
+                double discountprice = rs.getDouble("discountPrice");
+                // ProductLine fields
+                String productLineName = rs.getString("productLineName");
+                int categoryId = rs.getInt("categoryId");
+                int brandId = rs.getInt("brandId");
+                // Category fields
+                String categoryName = rs.getString("categoryName");
+                String shopName = rs.getString("shopName");
+
+                // Optionally create ProductLine and Category objects if needed
+                ProductLine productLine = new ProductLine(productLineId, rs.getString("ProductLineName"), categoryId, brandId);
+                Category category = new Category(categoryId, categoryName);
+                String image = rs.getString("image");
+                String title = rs.getString("title");
+                Shop shop = new Shop(shopId, shopName, rs.getString("address"), image, rs.getDouble("accountBalance"), rs.getInt("accountID"));
+
+                ShopProduct shopProduct = new ShopProduct(id, shopId, productLine, price, description, createdAt, updatedAt, isDeleted, title, averageRating, shop, image, rs.getInt("totalSold"), discount, discountprice);
+
+                list.add(shopProduct);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }
 }

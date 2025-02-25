@@ -52,4 +52,24 @@ public class ShopDAO extends DBContext{
         }
         return null;
     }
+    
+    public Shop getShopByShopShopId(int ShopId) {
+        String sql = "select shop.shopId, shop.shopName, shop.image from shop\n"
+                + "join shopProduct on shopProduct.shopId=shop.shopId\n"
+                + "where shop.shopId=?";
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, ShopId);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    return new Shop(rs.getInt("shopId"),
+                            rs.getString("shopName"),
+                            rs.getString("image"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi cơ sở dữ liệu: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
