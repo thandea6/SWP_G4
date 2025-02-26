@@ -151,5 +151,5 @@ public class ViewShopServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+//Tu commit
 }
