@@ -20,6 +20,10 @@
         <servlet-name>ViewShopServlet</servlet-name>
         <servlet-class>controller.ViewShopServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailProductServlet</servlet-name>
         <url-pattern>/detail</url-pattern>
@@ -39,5 +43,9 @@
     <servlet-mapping>
         <servlet-name>ViewShopServlet</servlet-name>
         <url-pattern>/viewshop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 </web-app>
