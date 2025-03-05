@@ -125,4 +125,47 @@ public class ProductItemDAO extends DBContext{
 
         return null;
     }
+    public ProductItem getQuantity(int shopProductId, int sizeId, int colorId) {
+        String sql = "select * from productItem where productItem.shopProductId = ? and productItem.colorId = ? and productItem.sizeId = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, shopProductId);
+            st.setInt(2, colorId);
+            st.setInt(3, sizeId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new ProductItem(rs.getInt("ProductItemId"), rs.getInt("shopProductId"), rs.getInt("sizeId"), rs.getInt("colorId"), rs.getInt("quantity"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+    
+    public List<Size> getAvailableSizesByColor(int shopProductId, int colorId) {
+        List<Size> availableSizes = new ArrayList<>();
+        String sql = "SELECT DISTINCT s.sizeId, s.sizeValue " +
+                     "FROM productItem p " +
+                     "JOIN size s ON p.sizeId = s.sizeId " +
+                     "WHERE p.shopProductId = ? AND p.colorId = ? AND p.quantity > 0";
+
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, shopProductId);
+            st.setInt(2, colorId);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int sizeId = rs.getInt("sizeId");
+                int sizeValue = rs.getInt("sizeValue");
+                availableSizes.add(new Size(sizeId, sizeValue));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return availableSizes;
+    }
+
+    
 }
