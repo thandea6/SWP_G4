@@ -1,0 +1,32 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 13, 2025, 8:52:33 PM
+    Author     : ADMIN
+*/
+
+input[type="date"] {
+    padding: 0.5rem; /* Thêm khoảng cách bên trong */
+    border: 1px solid #cbd5e0; /* Màu viền */
+    border-radius: 0.25rem; /* Bo tròn góc */
+    font-size: 1rem; /* Kích thước chữ */
+    color: #4a5568; /* Màu chữ */
+    background-color: #fff; /* Màu nền */
+    transition: border-color 0.2s, box-shadow 0.2s; /* Hiệu ứng chuyển đổi */
+}
+
+input[type="date"]:focus {
+    border-color: #63b3ed; /* Màu viền khi focus */
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.5); /* Hiệu ứng bóng khi focus */
+    outline: none; /* Bỏ viền mặc định khi focus */
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
