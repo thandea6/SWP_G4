@@ -10,10 +10,9 @@ package controller;
  * @author heaty566
  */
 public class Constants {
+public static final String GOOGLE_CLIENT_ID = System.getenv("GOOGLE_CLIENT_ID");
+public static final String GOOGLE_CLIENT_SECRET = System.getenv("GOOGLE_CLIENT_SECRET");
 
-	public static String GOOGLE_CLIENT_ID = "406240029679-tser79dm9n4l3ci224sndgabgo8u5lun.apps.googleusercontent.com";
-
-	public static String GOOGLE_CLIENT_SECRET = "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";
 
 	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/SWP/LoginGoogleHandler";
         
