@@ -20,6 +20,34 @@
         <servlet-name>ViewShopServlet</servlet-name>
         <servlet-class>controller.ViewShopServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminHomeServlet</servlet-name>
+        <servlet-class>controller.AdminHomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManagerUserServlet</servlet-name>
+        <servlet-class>controller.AdminManagerUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListProductLineServlet</servlet-name>
+        <servlet-class>controller.ListProductLineServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProductLineServlet</servlet-name>
+        <servlet-class>controller.AddProductLineServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductLineServlet</servlet-name>
+        <servlet-class>controller.UpdateProductLineServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WishListServlet</servlet-name>
+        <servlet-class>controller.WishListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DetailProductServlet</servlet-name>
         <url-pattern>/detail</url-pattern>
@@ -39,5 +67,33 @@
     <servlet-mapping>
         <servlet-name>ViewShopServlet</servlet-name>
         <url-pattern>/viewshop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminHomeServlet</servlet-name>
+        <url-pattern>/adminHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManagerUserServlet</servlet-name>
+        <url-pattern>/adminManagerUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListProductLineServlet</servlet-name>
+        <url-pattern>/listProductLine</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductLineServlet</servlet-name>
+        <url-pattern>/addProductLine</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductLineServlet</servlet-name>
+        <url-pattern>/updateProductLine</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WishListServlet</servlet-name>
+        <url-pattern>/wishlist</url-pattern>
     </servlet-mapping>
 </web-app>

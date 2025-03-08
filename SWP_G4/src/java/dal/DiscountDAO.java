@@ -39,4 +39,31 @@ public class DiscountDAO extends DBContext{
         }
         return null;
     }
+    public Discount getActiveDiscountByProductId(int productId) {
+        String sql = "SELECT * \n"
+                + "FROM discount \n"
+                + "join productItem on productItem.shopProductId = discount.shopProductId\n"
+                + "where productItem.productItemId = ?\n"
+                + "AND GETDATE() <= endDate\n"
+                + "ORDER BY startDate";
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, productId);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    return new Discount(
+                            rs.getInt("discountId"),
+                            rs.getInt("shopProductId"),
+                            rs.getInt("discountValue"),
+                            rs.getDate("startDate"),
+                            rs.getDate("endDate"),
+                            rs.getDouble("promotionalPrice")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            // Replace with your logging framework's error logging
+            System.err.println("Database query error: " + e.getMessage());
+        }
+        return null;
+    }
 }
