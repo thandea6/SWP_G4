@@ -225,7 +225,7 @@ public class ProductItemDAO extends DBContext {
 
         return list;
     }
-
+    
     public ProductItem getProductItemByProductItemID(int id) {
         ProductItem product = null;
         String sql = "SELECT * FROM [dbo].[productItem] join shopProduct on productItem.shopProductId = shopProduct.id join color on productItem.colorId = color.colorId join size on productItem.sizeId = size.sizeId join shop on shopProduct.shopId = shop.shopId where productItem.productItemId = ?";
@@ -445,6 +445,6 @@ public void addOrder(User u, Cart cart, String name, String address, String phon
         LocalDateTime curDate = LocalDateTime.now();
         System.out.println(quan);
         System.out.println(curDate);
-    }
+    }  
 
 }
