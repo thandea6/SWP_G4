@@ -7,6 +7,8 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Shop;
 
 /**
@@ -71,5 +73,27 @@ public class ShopDAO extends DBContext{
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public List<Shop> getAllShop() {
+        List<Shop> shopInfo = new ArrayList<>();
+        String sql = "select * from shop";
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Shop shop = new Shop(rs.getInt("shopId"),
+                            rs.getString("shopName"),
+                            rs.getString("address"),
+                            rs.getString("image"),
+                            rs.getDouble("accountBalance"),
+                            rs.getInt("accountId"));
+                    shopInfo.add(shop);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi cơ sở dữ liệu: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return shopInfo;
     }
 }

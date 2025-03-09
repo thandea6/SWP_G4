@@ -25,6 +25,7 @@ import model.Account;
 import model.Brand;
 import model.Category;
 import model.Color;
+import model.Comment;
 import model.Discount;
 import model.Images;
 import model.ProductItem;
@@ -165,7 +166,99 @@ public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        List<ShopProduct> list = null;
+        List<Category> list1 = null;
+        List<Color> list2 = null;
+        List<Size> list3 = null;
+        List<Images> list4 = null;
+        List<Comment> listc = null;
+        List<Rating> listr = null;
+        int shopp = Integer.parseInt(request.getParameter("sid"));
+        int id = Integer.parseInt(request.getParameter("pId")); //pId ShopProductID
+        ShopProductDAO spd = new ShopProductDAO();
+        ShopProduct sp = spd.getShopProductById(id);
+        dal.CategoryDAO d = new dal.CategoryDAO();
+        dal.ProductItemDAO pl = new dal.ProductItemDAO();
+        WishListDAO wld = new WishListDAO();
+        dal.ShopDAO s = new dal.ShopDAO();
+        dal.ImagesDAO i = new dal.ImagesDAO();
+        BrandDAO bd = new BrandDAO();
+        CommentDAO cmt = new CommentDAO();
+        RatingDAO r = new RatingDAO();
+        Discount dis = new Discount();
+        
+        DiscountDAO disD = new DiscountDAO();
+        dis =  disD.getDisInfoDiscountById(id);
+        list = spd.getRandomProductOfShop(shopp);
+        list1 = d.getCategoryAll();
+        list2 = pl.getAllProductColor(id);
+        list3 = pl.getAllProductSize(id);
+        list4 = i.getAllImagesByShopProductId(id);
+         listr = r.getAllRatingByShopProductId(id);
+        List<Brand> listB = bd.getBrandAll();
+        Rating rating = r.getAvgRatingByShopProductId(id);
+        //create boolean brand to save value checkbox brand
+        boolean[] bb = new boolean[listB.size() + 1];
+        //set value[0]
+        bb[0] = true;
+        listc = cmt.getAllCommentByShopProductId(id);
+        int sizeId = Integer.parseInt(request.getParameter("size"));
+        int colorId = Integer.parseInt(request.getParameter("color"));
+        ProductItem quantity = pl.getQuantity(id, sizeId, colorId);
+        ProductItem sumquantity = pl.getSumQuantityByShopProductId(id);
+        Shop countproduct = s.getCountProductOfShopByShopId(shopp);
+        ProductItem pr = pl.getProductByID(id);
+        Shop shop = s.getShopByShopProductId(id);
+         Rating countRating = r.countRatingByShop(shopp);
+         
+        Account a = (Account) session.getAttribute("user");
+        if (a == null) {
+            request.setAttribute("countcmt", countRating);
+            request.setAttribute("data", list);
+            request.setAttribute("countproduct", countproduct);
+            request.setAttribute("listB", listB);
+            request.setAttribute("sumquantity", sumquantity);
+            request.setAttribute("quantity", quantity);
+            request.setAttribute("shopProduct", sp);
+            request.setAttribute("shop", shop);
+            request.setAttribute("detail", pr);
+            request.setAttribute("data1", list1);
+            request.setAttribute("color", list2);
+            request.setAttribute("size", list3);
+            request.setAttribute("images", list4);
+            request.setAttribute("comment", listr);
+            request.setAttribute("dis", dis);
+            request.setAttribute("sid", shopp);
+            request.setAttribute("rating", rating);
+                       
+            request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
+        } else {
+            UserDAO ud = new UserDAO();
+            User u = ud.getUserByAccountId(a.getAccountId());
+            WishList w1 = wld.checkWishList(id, u.getUserId());
+            request.setAttribute("countcmt", countRating);
+            request.setAttribute("data", list);
+            request.setAttribute("countproduct", countproduct);
+            request.setAttribute("listB", listB);
+            request.setAttribute("sumquantity", sumquantity);
+            request.setAttribute("quantity", quantity);
+            request.setAttribute("shopProduct", sp);
+            request.setAttribute("shop", shop);
+            request.setAttribute("detail", pr);
+            request.setAttribute("data1", list1);
+            request.setAttribute("color", list2);
+            request.setAttribute("size", list3);
+            request.setAttribute("images", list4);
+            request.setAttribute("comment", listr);
+            request.setAttribute("sid", shopp);
+            request.setAttribute("customer", u);
+            request.setAttribute("dis", dis);
+            request.setAttribute("wishlist", w1);
+            request.setAttribute("rating", rating);
+            
+            request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
+        }
     }
 
     /** 
