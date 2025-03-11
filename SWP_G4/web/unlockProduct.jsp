@@ -1,3 +1,9 @@
+<%-- 
+    Document   : hiddenProduct
+    Created on : 9 Jun 2024, 23:02:46
+    Author     : admin
+--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -119,49 +125,22 @@
                 border-color: #ff7f00;
             }
         </style>
-        <script type="text/javascript">
-            // Hàm để ẩn thông báo sau 4 giây
-            function hideMessage() {
-                var messageElement = document.getElementById("message");
-                if (messageElement) {
-                    setTimeout(function () {
-                        messageElement.style.display = "none";
-                    }, 4000); // 4 giây
-                }
-            }
-
-            // Gọi hàm hideMessage khi trang đã tải xong
-            window.onload = hideMessage;
-        </script>
     </head>
-
     <body class="bg-gray-100">
         <div class="mx-auto mt-10">
             <div class="flex">
+
                 <jsp:include page="menu.jsp"></jsp:include>
-                <div class="w-full bg-white p-6 rounded shadow ml-6">
-                        <h1 class="text-2xl font-bold mb-6">Danh Sách Sản Phẩm</h1>
-                    <%
-               String mess = (String) request.getAttribute("mess");
-               if (mess != null) {
-                    %>
-                    <p style="color: orange" id="message">${mess}</p>
-                    <%
-                        }
-                    %>
+                    <div class="w-full bg-white p-6 rounded shadow ml-6">
+                        <h1 class="text-2xl font-bold mb-6">Danh Sách Sản Phẩm Khóa</h1>
+                    <c:if test="${not empty requestScope.mess}">
+                        <p style="color: green" id="message">${requestScope.mess}</p>
+                    </c:if>
                     <div class="btn-container">
-                        <a href="addProduct" class="btn">Thêm Sản Phẩm</a>
-                        
+                        <a href="productList" class="btn">Sản Phẩm Đang Bán</a>
                     </div>
-
-                    <div class="btn-container" style="margin: 20px 0;">
-                        <a href="lockProductList" class="btn">Sản Phẩm Bị Khóa</a>
-                        <a href="updateAllQuantity.jsp" class="btn">Cập Nhật Số Lượng Kho Hàng</a>
-                    </div>
-
-
-                    <form action="productList" method="get" class="search-form">
-                        <input required name="txt" class="search-input" type="text" value="${txt}" placeholder="Tìm kiếm theo tên">
+                    <form action="lockProductList" method="get" class="search-form">
+                        <input required name="txt" class="search-input" type="text" value="${txt}" placeholder="Tìm theo tên">
                         <select name="sort" class="sort-select">
                             <option value="" disabled selected hidden>Sắp xếp theo giá</option>
                             <option value="giam">Sắp Xếp Giảm Dần</option>
@@ -183,19 +162,16 @@
                             </thead>
                             <tbody>
                                 <c:forEach items="${listP}" var="p" varStatus="status">
-                                    <tr class="product-row">
+                                    <tr class="product-row">                                   
                                         <td>${p.title}</td>
                                         <td>
                                             <img src="${p.image}" alt="Product Image">
                                         </td>
-                                         
-                                          <td> <fmt:formatNumber value="${p.price}"/> VND</td>
+                                         <td> <fmt:formatNumber value="${p.price}"/> VND</td>
                                         <td>${p.categoryName}</td>
                                         <td>${p.brandName}</td>
                                         <td class="action-links">
-                                            <a href="shopProductDetail?ID=${p.id}">Chi Tiết</a><br/>
-                                            <a style="color: green" href="updateProduct?ID=${p.id}">Cập Nhật</a> <br/>
-                                            <a style="color: red" href="deleteProduct?ID=${p.id}" onclick="return confirm('Bạn muốn khóa sản phẩm này?')">Khóa</a>
+                                            <a href="unlockProduct?ID=${p.id}" onclick="return confirm('Bạn có muốn mở khóa sản phẩm này?')">Mở Khóa</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
