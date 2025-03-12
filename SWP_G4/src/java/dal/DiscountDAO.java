@@ -102,7 +102,6 @@ public class DiscountDAO extends DBContext {
         }
         return null;
     }
-<<<<<<< HEAD
 
     public void deleteDiscount(int id) {
         String sql = "DELETE FROM [dbo].[discount] WHERE discountId =?";
@@ -222,8 +221,6 @@ public class DiscountDAO extends DBContext {
     //SELECT *
     //FROM [dbo].[discount]
     //where shopProductId = 9
-=======
->>>>>>> 5e3144155bc1605334e1bb4a32e697814205b1bb
     public Discount getActiveDiscountByProductId(int productId) {
         String sql = "SELECT * \n"
                 + "FROM discount \n"
@@ -251,7 +248,6 @@ public class DiscountDAO extends DBContext {
         }
         return null;
     }
-<<<<<<< HEAD
 
     public static void main(String[] args) {
         DiscountDAO dis = new DiscountDAO();
@@ -265,6 +261,4 @@ public class DiscountDAO extends DBContext {
         Discount d = dis.getActiveDiscountByProductId(43);
         System.out.println(d);
     }
-=======
->>>>>>> 5e3144155bc1605334e1bb4a32e697814205b1bb
 }
