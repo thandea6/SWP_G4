@@ -23,7 +23,7 @@ public class Config {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     public static String vnp_ReturnUrl = "http://localhost:8080/SWP/checkout";
     public static String vnp_TmnCode = "DXBIIXJN";
-    public static String secretKey = "Y4203643G826DPU8WX3QBGBJZ8N0MH3X";
+    public static String secretKey = "6J52F1MVD53K8MFPXTU0HQYZUBPAK8C3";
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 
     public static String md5(String message) {
