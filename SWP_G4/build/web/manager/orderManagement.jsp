@@ -170,16 +170,16 @@ document.addEventListener("click", function(event) {
                 </form>
                     </div>
                       <div class="border-b border-gray-200 mb-4">
-                <ul class="flex">
+               <ul class="flex">
                     <li class="mr-2">
-                        <a href="orderPending" class="inline-block p-4 border-b-2 border-transparent hover:border-orange-500">Đơn Hàng Đang Chờ</a>
+                        <a href="orderManagement" class="inline-block p-4 border-b-2 border-transparent hover:border-orange-500">Đơn Hàng Đang Chờ Duyệt</a>
                     </li>
-                    <li class="mr-2">
+<!--                    <li class="mr-2">
                         <a href="orderProcessing" class="inline-block p-4 border-b-2 border-transparent hover:border-orange-500">Đơn Hàng Đang Xử Lý</a>
                     </li>
                     <li class="mr-2">
                         <a href="orderDone" class="inline-block p-4 border-b-2 border-transparent hover:border-orange-500">Đơn Hàng Đã Hoàn Thành</a>
-                    </li>
+                    </li>-->
                     <li class="mr-2">
                         <a href="orderCancel" class="inline-block p-4 border-b-2 border-transparent hover:border-orange-500">Đơn Hàng Đã Hủy</a>
                     </li>
