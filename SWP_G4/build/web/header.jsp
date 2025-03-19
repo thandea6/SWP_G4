@@ -93,8 +93,7 @@
                             <img src="images/logohome.png" style="width: 90px;margin-left: 15px;height: 70px;margin-bottom: 0px;margin-top: 20px;" alt="" class="header__logo-img" onclick="resetFilters()">
                         </div>
                     </a>
-               <!--     <form action="searchName" style="width: 100%"> -->
-                <form  style="width: 100%">
+                    <form action="searchName" style="width: 100%">
                         <div class="header__search">
                             <!-- History -->
 

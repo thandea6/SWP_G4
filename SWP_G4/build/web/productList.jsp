@@ -151,8 +151,15 @@
                     %>
                     <div class="btn-container">
                         <a href="addProduct" class="btn">Thêm Sản Phẩm</a>
-                        <a href="lockProductList" class="btn">Sản Phẩm Bị Khóa</a>
+                        
                     </div>
+
+                    <div class="btn-container" style="margin: 20px 0;">
+                        <a href="lockProductList" class="btn">Sản Phẩm Bị Khóa</a>
+                        <a href="updateAllQuantity.jsp" class="btn">Cập Nhật Số Lượng Kho Hàng</a>
+                    </div>
+
+
                     <form action="productList" method="get" class="search-form">
                         <input required name="txt" class="search-input" type="text" value="${txt}" placeholder="Tìm kiếm theo tên">
                         <select name="sort" class="sort-select">

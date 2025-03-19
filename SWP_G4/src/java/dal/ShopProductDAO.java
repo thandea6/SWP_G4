@@ -17,6 +17,7 @@ import java.sql.Date;
 import model.Images;
 import model.ProductLine;
 import model.Shop;
+import java.sql.Date;
 
 /**
  *
@@ -24,6 +25,7 @@ import model.Shop;
  */
 public class ShopProductDAO extends DBContext {
 
+    // Get all shop products
     public List<ShopProduct> getShopProductsAll() {
         List<ShopProduct> list = new ArrayList<>();
         String sql = """
@@ -71,7 +73,6 @@ public class ShopProductDAO extends DBContext {
                                  ) od ON od.shopProductId = sp.id;""";
 
         try (PreparedStatement st = connection.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int shopId = rs.getInt("shopId");
@@ -84,28 +85,20 @@ public class ShopProductDAO extends DBContext {
                 int averageRating = rs.getInt("averageRating");
                 int discount = rs.getInt("discountValue");
                 double discountprice = rs.getDouble("discountPrice");
-                // ProductLine fields
+                
                 String productLineName = rs.getString("productLineName");
                 int categoryId = rs.getInt("categoryId");
                 int brandId = rs.getInt("brandId");
-                // Category fields
+
                 String categoryName = rs.getString("categoryName");
                 String shopName = rs.getString("shopName");
 
-                // Optionally create ProductLine and Category objects if needed
-                ProductLine productLine = new ProductLine(productLineId, rs.getString("ProductLineName"), categoryId, brandId);
+                ProductLine productLine = new ProductLine(productLineId, productLineName, categoryId, brandId);
                 Category category = new Category(categoryId, categoryName);
                 String image = rs.getString("image");
                 String title = rs.getString("title");
                 Shop shop = new Shop(shopId, shopName, rs.getString("address"), image, rs.getDouble("accountBalance"), rs.getInt("accountID"));
 
-//                    private int shopId;
-//    private String shopName;
-//    private String address;
-//    private String image;
-//    private double accountBalance;
-//    private int accountId;
-                // Create ShopProduct object
                 ShopProduct shopProduct = new ShopProduct(id, shopId, productLine, price, description, createdAt, updatedAt, isDeleted, title, averageRating, shop, image, rs.getInt("totalSold"), discount, discountprice);
 
                 list.add(shopProduct);
@@ -117,6 +110,7 @@ public class ShopProductDAO extends DBContext {
         return list;
     }
 
+    // Search products in wishlist
     public List<ShopProduct> getShopProductsAllbyWishList(int userId) {
         List<ShopProduct> list = new ArrayList<>();
         String sql = """
@@ -1058,7 +1052,7 @@ public class ShopProductDAO extends DBContext {
         ArrayList<ShopProduct> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
             arr.add(list.get(i));
-        }
+}
         return arr;
     }
 

@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dal;
 
 import java.lang.reflect.Array;
@@ -13,7 +16,10 @@ import model.OrderDetail;
 import model.ProductItem;
 import model.Voucher;
 
-
+/**
+ *
+ * @author VIET HOANG
+ */
 public class OrderDetailDAO extends DBContext {
 
     public List<OrderDetail> listAllOrderDetailByUserId(int userId, int orderId) {
@@ -167,10 +173,10 @@ public class OrderDetailDAO extends DBContext {
             if (rs.next()) {
                 String code = rs.getString("code");
                 if (code != null) {
-//                    VoucherDAO vd = new VoucherDAO();
-//                    Voucher v = vd.getVoucherByCode(code);
+                    VoucherDAO vd = new VoucherDAO();
+                    Voucher v = vd.getVoucherByCode(code);
                     od.setCode(code);                   
-//                    od.setReducedAmount(v.getReducedAmount());
+                    od.setReducedAmount(v.getReducedAmount());
                 }
                 od.setProductItemId(rs.getInt("productItemId"));
                 od.setPrice(rs.getDouble("price"));

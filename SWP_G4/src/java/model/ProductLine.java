@@ -35,7 +35,7 @@ public class ProductLine {
 private int totalPriceSold;
     private int totalQuantitySold;
 
-    public ProductLine() {
+    public ProductLine(int aInt, String string, String string1, int aInt1, int aInt2, String string2, String string3, int aInt3, String aDouble) {
     }
  public int getTotalPriceSold() {
         return totalPriceSold;

@@ -51,7 +51,7 @@ public class ProductItemDAO extends DBContext {
                 int colorId = rs.getInt("colorId");
                 int quantity = rs.getInt("quantity");
 
-                String sizeValue = rs.getString("sizeValue");
+                int sizeValue = rs.getInt("sizeValue");
                 String colorValue = rs.getString("colorValue");
                 int price = rs.getInt("price");
                 String description = rs.getString("description");
@@ -109,7 +109,7 @@ public class ProductItemDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int sizeId = rs.getInt("sizeId");
-                String sizeValue = rs.getString("sizeValue");
+                int sizeValue = rs.getInt("sizeValue");
                 Size size = new Size(sizeId, sizeValue);
 
                 list.add(size);
@@ -205,7 +205,7 @@ public class ProductItemDAO extends DBContext {
                 int sizeId = rs.getInt("sizeId");
                 int colorId = rs.getInt("colorId");
                 int quantity = rs.getInt("quantity");
-                String sizeValue = rs.getString("sizeValue");
+                int sizeValue = rs.getInt("sizeValue");
                 String colorValue = rs.getString("colorValue");
                 double price = rs.getDouble("price");
                 String description = rs.getString("description");
@@ -241,7 +241,7 @@ public class ProductItemDAO extends DBContext {
                 int colorId = rs.getInt("colorId");
                 int quantity = rs.getInt("quantity");
 
-                String sizeValue = rs.getString("sizeValue");
+                int sizeValue = rs.getInt("sizeValue");
                 String colorValue = rs.getString("colorValue");
                 int price = rs.getInt("price");
                 String description = rs.getString("description");
@@ -417,7 +417,7 @@ public void addOrder(User u, Cart cart, String name, String address, String phon
                 int colorId = rs.getInt("colorId");
                 int quantity = rs.getInt("quantity");
 
-                String sizeValue = rs.getString("sizeValue");
+                int sizeValue = rs.getInt("sizeValue");
                 String colorValue = rs.getString("colorValue");
                 int price = rs.getInt("price");
                 String description = rs.getString("description");
