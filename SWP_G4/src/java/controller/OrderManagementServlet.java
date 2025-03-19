@@ -1,7 +1,11 @@
+<<<<<<< HEAD
+
+=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 package controller;
 
 import dal.OrderDAO;
@@ -27,6 +31,9 @@ import model.Shop;
 @WebServlet(name = "OrderManagementServlet", urlPatterns = {"/orderManagement"})
 public class OrderManagementServlet extends HttpServlet {
 
+<<<<<<< HEAD
+    
+=======
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -62,6 +69,7 @@ public class OrderManagementServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -84,6 +92,13 @@ public class OrderManagementServlet extends HttpServlet {
             request.setAttribute("orderList", orderList);
             request.setAttribute("shopId", shopId);
  //            request.setAttribute("shop", shop1);
+<<<<<<< HEAD
+            request.getRequestDispatcher("manager/orderManagement.jsp").forward(request, response);
+        }
+    }
+
+   
+=======
             request.getRequestDispatcher("orderManagement.jsp").forward(request, response);
         }
     }
@@ -96,6 +111,7 @@ public class OrderManagementServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -118,6 +134,12 @@ public class OrderManagementServlet extends HttpServlet {
         request.setAttribute("txt", txt);
         request.setAttribute("shopId", shopId);
         request.setAttribute("orderList", orderList);
+<<<<<<< HEAD
+        request.getRequestDispatcher("manager/orderManagement.jsp").forward(request, response);
+    }
+
+   
+=======
         request.getRequestDispatcher("orderManagement.jsp").forward(request, response);
     }
 
@@ -126,6 +148,7 @@ public class OrderManagementServlet extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     public String getServletInfo() {
         return "Short description";

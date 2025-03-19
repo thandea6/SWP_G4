@@ -1,7 +1,10 @@
+<<<<<<< HEAD
+=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 
 package controller;
 
@@ -18,6 +21,13 @@ import java.util.List;
 import model.Account;
 import model.Shop;
 
+<<<<<<< HEAD
+
+@WebServlet(name="HomeShopServlet", urlPatterns={"/homeShop"})
+public class HomeShopServlet extends HttpServlet {
+   
+   
+=======
 /**
  *
  * @author admin
@@ -49,6 +59,7 @@ public class HomeShopServlet extends HttpServlet {
         }
     } 
 
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
      * Handles the HTTP <code>GET</code> method.
@@ -74,11 +85,25 @@ public class HomeShopServlet extends HttpServlet {
             Shop shop = listS.get(0);
 
             session.setAttribute("shop", shop);
+<<<<<<< HEAD
+            request.getRequestDispatcher("manager/shopHome.jsp").forward(request, response);
+=======
             request.getRequestDispatcher("shopHome.jsp").forward(request, response);
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
         }
 
     } 
 
+<<<<<<< HEAD
+   
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        
+    }
+
+
+=======
     /** 
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
@@ -100,5 +125,6 @@ public class HomeShopServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 
 }

@@ -17,6 +17,7 @@ import java.sql.Date;
 import model.Images;
 import model.ProductLine;
 import model.Shop;
+import java.sql.Date;
 
 /**
  *
@@ -24,6 +25,7 @@ import model.Shop;
  */
 public class ShopProductDAO extends DBContext {
 
+    // Get all shop products
     public List<ShopProduct> getShopProductsAll() {
         List<ShopProduct> list = new ArrayList<>();
         String sql = """
@@ -71,7 +73,6 @@ public class ShopProductDAO extends DBContext {
                                  ) od ON od.shopProductId = sp.id;""";
 
         try (PreparedStatement st = connection.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int shopId = rs.getInt("shopId");
@@ -84,28 +85,20 @@ public class ShopProductDAO extends DBContext {
                 int averageRating = rs.getInt("averageRating");
                 int discount = rs.getInt("discountValue");
                 double discountprice = rs.getDouble("discountPrice");
-                // ProductLine fields
+                
                 String productLineName = rs.getString("productLineName");
                 int categoryId = rs.getInt("categoryId");
                 int brandId = rs.getInt("brandId");
-                // Category fields
+
                 String categoryName = rs.getString("categoryName");
                 String shopName = rs.getString("shopName");
 
-                // Optionally create ProductLine and Category objects if needed
-                ProductLine productLine = new ProductLine(productLineId, rs.getString("ProductLineName"), categoryId, brandId);
+                ProductLine productLine = new ProductLine(productLineId, productLineName, categoryId, brandId);
                 Category category = new Category(categoryId, categoryName);
                 String image = rs.getString("image");
                 String title = rs.getString("title");
                 Shop shop = new Shop(shopId, shopName, rs.getString("address"), image, rs.getDouble("accountBalance"), rs.getInt("accountID"));
 
-//                    private int shopId;
-//    private String shopName;
-//    private String address;
-//    private String image;
-//    private double accountBalance;
-//    private int accountId;
-                // Create ShopProduct object
                 ShopProduct shopProduct = new ShopProduct(id, shopId, productLine, price, description, createdAt, updatedAt, isDeleted, title, averageRating, shop, image, rs.getInt("totalSold"), discount, discountprice);
 
                 list.add(shopProduct);
@@ -117,6 +110,7 @@ public class ShopProductDAO extends DBContext {
         return list;
     }
 
+    // Search products in wishlist
     public List<ShopProduct> getShopProductsAllbyWishList(int userId) {
         List<ShopProduct> list = new ArrayList<>();
         String sql = """
@@ -1058,7 +1052,7 @@ public class ShopProductDAO extends DBContext {
         ArrayList<ShopProduct> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
             arr.add(list.get(i));
-        }
+}
         return arr;
     }
 
@@ -1112,7 +1106,7 @@ public class ShopProductDAO extends DBContext {
                     ProductLine a = new ProductLine(rs.getInt("price"),
                             rs.getString("image"),
                             rs.getString("colorValue"),
-                            rs.getInt("sizeValue"),
+                            rs.getString("sizeValue"),
                             rs.getInt("quantity"),
                             rs.getString("title"),
                             rs.getString("statusValue"),
@@ -1177,7 +1171,7 @@ public class ShopProductDAO extends DBContext {
                     ProductLine a = new ProductLine(rs.getInt("price"),
                             rs.getString("image"),
                             rs.getString("colorValue"),
-                            rs.getInt("sizeValue"),
+                            rs.getString("sizeValue"),
                             rs.getInt("quantity"),
                             rs.getString("description"),
                             rs.getString("title"),
@@ -1387,7 +1381,7 @@ public class ShopProductDAO extends DBContext {
         return list;
     }
 
-    public List<ProductLine> getQuantityAndPriceSoldByAccountId(int accountId) {
+    public List<ProductLine> getQuantityAndPriceSoldByAccountId() {
         List<ProductLine> list = new ArrayList<>();
         String sql = """
                     SELECT 
@@ -1408,7 +1402,7 @@ public class ShopProductDAO extends DBContext {
                      JOIN category c ON c.categoryId = p.categoryId
                      JOIN productItem pi ON pi.shopProductId = sp.id
                      JOIN orderDetail od ON od.productItemId = pi.productItemId
-                     WHERE s.accountId = ? AND sp.is_deleted = 'FALSE' AND od.statusId=3
+                     WHERE  sp.is_deleted = 'FALSE' AND od.statusId=3
                      GROUP BY 
                          sp.id,
                          p.productLineId,
@@ -1420,7 +1414,6 @@ public class ShopProductDAO extends DBContext {
                          c.categoryName
                      ORDER BY total_price DESC;""";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, accountId);
 
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
@@ -1439,7 +1432,7 @@ public class ShopProductDAO extends DBContext {
         return list;
     }
 
-    public int getTotalQuantitySoldByAccountId(int accountId) {
+    public int getTotalQuantitySoldByAccountId() {
         int totalQuantity = 0;
         String sql = """
                 SELECT 
@@ -1451,9 +1444,8 @@ public class ShopProductDAO extends DBContext {
                 JOIN category c ON c.categoryId = p.categoryId
                 JOIN productItem pi ON pi.shopProductId = sp.id
                 JOIN orderDetail od ON od.productItemId = pi.productItemId
-                WHERE s.accountId = ? AND sp.is_deleted = 'FALSE' AND od.statusId=3;""";
+                WHERE  sp.is_deleted = 'FALSE' AND od.statusId=3;""";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, accountId);
 
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -1467,7 +1459,7 @@ public class ShopProductDAO extends DBContext {
         return totalQuantity;
     }
 
-    public int getTotalPriceSoldByAccountId(int accountId) {
+    public int getTotalPriceSoldByAccountId() {
         int totalPrice = 0;
         String sql = """
                 SELECT 
@@ -1479,9 +1471,8 @@ public class ShopProductDAO extends DBContext {
                 JOIN category c ON c.categoryId = p.categoryId
                 JOIN productItem pi ON pi.shopProductId = sp.id
                 JOIN orderDetail od ON od.productItemId = pi.productItemId
-                WHERE s.accountId = ? AND sp.is_deleted = 'FALSE' AND od.statusId=3;""";
+                WHERE sp.is_deleted = 'FALSE' AND od.statusId=3;""";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, accountId);
 
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -1495,7 +1486,7 @@ public class ShopProductDAO extends DBContext {
         return totalPrice;
     }
 
-    public int getTotalUserBuyProductByAccountId(int accountId) {
+    public int getTotalUserBuyProductByAccountId() {
         int totalUser = 0;
         String sql = """
                SELECT COUNT(DISTINCT o.userId) AS UserCount
@@ -1507,11 +1498,10 @@ public class ShopProductDAO extends DBContext {
                 JOIN productItem pi ON pi.shopProductId = sp.id
                 JOIN orderDetail od ON od.productItemId = pi.productItemId
                 JOIN [order] o ON o.orderId = od.orderId
-                WHERE s.accountId = ? 
-                  AND sp.is_deleted = 'FALSE' 
+                WHERE 
+                   sp.is_deleted = 'FALSE' 
                   AND od.statusId = 3;""";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, accountId);
 
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -1524,9 +1514,9 @@ public class ShopProductDAO extends DBContext {
         }
         return totalUser;
     }
-
+    
     public static void main(String[] args) {
-        ShopProductDAO s = new ShopProductDAO();
+      
         //       s.addProductToShop(6, 2, "hihi", 123456, "null", "hidi", false);
 //        List<ProductLine> list = s.getBillDetail(1, 28);
 //        for (ProductLine a : list) {
@@ -1536,11 +1526,23 @@ public class ShopProductDAO extends DBContext {
 //        for (int i = 0; i < sp.size(); i++) {
 //            System.out.println(sp.get(i));
 //        }
-        int[] bIdList = {0};
-        int[] cIdList = {0};
-        List<ShopProduct> sp1 = s.searchProductbyWishList("nike", cIdList, bIdList, 10000, 100000000, 1);
-        for (int i = 0; i < sp1.size(); i++) {
-            System.out.println(sp1.get(i));
+//        int[] bIdList = {0};
+//        int[] cIdList = {0};
+//        List<ShopProduct> sp1 = s.searchProductbyWishList("nike", cIdList, bIdList, 10000, 100000000, 1);
+//        for (int i = 0; i < sp1.size(); i++) {
+//            System.out.println(sp1.get(i));
+//        }
+  ShopProductDAO dao = new ShopProductDAO();
+       // Thay đổi accountId tùy vào dữ liệu của bạn
+        
+        List<ProductLine> productList = dao.getQuantityAndPriceSoldByAccountId();
+        
+        if (productList.isEmpty()) {
+            System.out.println("Không có sản phẩm nào được bán bởi tài khoản có ID: " );
+        } else {
+            for (ProductLine product : productList) {
+                System.out.println(product);
+            }
         }
     }
 }

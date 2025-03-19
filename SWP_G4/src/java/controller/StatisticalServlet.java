@@ -1,7 +1,10 @@
+<<<<<<< HEAD
+=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 package controller;
 
 import dal.OrderDAO;
@@ -24,6 +27,11 @@ import model.ProductLine;
 import model.Shop;
 import model.ShopProduct;
 
+<<<<<<< HEAD
+@WebServlet(name = "StatisticalServlet", urlPatterns = {"/statistical"})
+public class StatisticalServlet extends HttpServlet {
+
+=======
 /**
  *
  * @author admin
@@ -66,6 +74,7 @@ public class StatisticalServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,21 +90,34 @@ public class StatisticalServlet extends HttpServlet {
             List<Shop> listS;
             listS = sd.getShop(accountId);
             Shop shop = listS.get(0);
+<<<<<<< HEAD
+            List<ProductLine> list1 = sp.getQuantityAndPriceSoldByAccountId();
+            int totalQuantitySold = sp.getTotalQuantitySoldByAccountId();
+            int totalPriceSold = sp.getTotalPriceSoldByAccountId();
+            int userCount = sp.getTotalUserBuyProductByAccountId();
+=======
             List<ProductLine> list1 = sp.getQuantityAndPriceSoldByAccountId(accountId);
             int totalQuantitySold = sp.getTotalQuantitySoldByAccountId(accountId);
             int totalPriceSold = sp.getTotalPriceSoldByAccountId(accountId);
             int userCount = sp.getTotalUserBuyProductByAccountId(accountId);
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 
             request.setAttribute("userCount", userCount);
             request.setAttribute("totalQuantitySold", totalQuantitySold);
             request.setAttribute("totalPriceSold", totalPriceSold);
             request.setAttribute("listSold", list1);
             request.setAttribute("shop", shop);
+<<<<<<< HEAD
+            request.getRequestDispatcher("manager/statistical.jsp").forward(request, response);
+=======
             request.getRequestDispatcher("statistical.jsp").forward(request, response);
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
         }
 
     }
 
+<<<<<<< HEAD
+=======
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -104,6 +126,7 @@ public class StatisticalServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -122,6 +145,21 @@ public class StatisticalServlet extends HttpServlet {
             int month = Integer.parseInt(request.getParameter("month"));
             int year = Integer.parseInt(request.getParameter("year"));
 
+<<<<<<< HEAD
+            List<Integer> dataListMonth = new ArrayList<>();
+            for (int i = 1; i <= 12; i++) {
+                dataListMonth.add(o.getTotalQuantitySoldByAccountIdAndMonth(year, accountId, i));
+            }
+            List<Integer> dataListDay = new ArrayList<>();
+            for (int i = 1; i <= 30; i++) {
+                dataListDay.add(o.getTotalQuantitySoldByDay(accountId, year, month, i));
+            }
+
+            List<ProductLine> list1 = sp.getQuantityAndPriceSoldByAccountId();
+            int totalQuantitySold = sp.getTotalQuantitySoldByAccountId();
+            int totalPriceSold = sp.getTotalPriceSoldByAccountId();
+            int userCount = sp.getTotalUserBuyProductByAccountId();
+=======
             int t1 = o.getTotalQuantitySoldByAccountIdAndMonth(year, accountId, 1);
             int t2 = o.getTotalQuantitySoldByAccountIdAndMonth(year, accountId, 2);
             int t3 = o.getTotalQuantitySoldByAccountIdAndMonth(year, accountId, 3);
@@ -174,6 +212,7 @@ public class StatisticalServlet extends HttpServlet {
             int totalQuantitySold = sp.getTotalQuantitySoldByAccountId(accountId);
             int totalPriceSold = sp.getTotalPriceSoldByAccountId(accountId);
             int userCount = sp.getTotalUserBuyProductByAccountId(accountId);
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
 
             request.setAttribute("userCount", userCount);
             request.setAttribute("totalQuantitySold", totalQuantitySold);
@@ -182,6 +221,12 @@ public class StatisticalServlet extends HttpServlet {
             request.setAttribute("dataListDay", dataListDay);
             request.setAttribute("dataListMonth", dataListMonth);
             request.setAttribute("shop", shop);
+<<<<<<< HEAD
+            request.getRequestDispatcher("manager/statistical.jsp").forward(request, response);
+        }
+    }
+
+=======
             request.getRequestDispatcher("statistical.jsp").forward(request, response);
         }
     }
@@ -191,6 +236,7 @@ public class StatisticalServlet extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+>>>>>>> 420fd3596f7a021da356974e42a221d3c07efdbe
     @Override
     public String getServletInfo() {
         return "Short description";
