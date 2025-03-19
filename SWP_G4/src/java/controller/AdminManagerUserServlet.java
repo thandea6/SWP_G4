@@ -11,6 +11,10 @@ import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+<<<<<<< HEAD
+=======
+import jakarta.servlet.annotation.WebServlet;
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,8 +26,14 @@ import model.User;
 
 /**
  *
+<<<<<<< HEAD
  * @author GiaKhiem
  */
+=======
+ * @author admin
+ */
+@WebServlet(name="AdminManagerUserServlet", urlPatterns={"/adminManagerUser"})
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
 public class AdminManagerUserServlet extends HttpServlet {
    
     /** 
@@ -60,7 +70,11 @@ public class AdminManagerUserServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< HEAD
     throws ServletException, IOException {
+=======
+            throws ServletException, IOException {
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
         if (user == null) {
@@ -80,7 +94,11 @@ public class AdminManagerUserServlet extends HttpServlet {
             request.setAttribute("shops", shops);
             request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }
+<<<<<<< HEAD
     } 
+=======
+    }
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
 
     /** 
      * Handles the HTTP <code>POST</code> method.
