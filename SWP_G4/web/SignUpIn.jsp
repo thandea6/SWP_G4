@@ -84,11 +84,19 @@
         </div>
         <div class="container" id="containerIn" style="width: 500px; min-height: 480px;">
             <div class="form-container sign-in-container" style="width: 100%;">
+<<<<<<< HEAD
                 <form action="/SWP_G4/login" method="post">
                     <h1>Đăng nhập</h1>
                     <div class="social-container">
                        
                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/SWP_G4/LoginGoogleHandler&response_type=code&client_id=406240029679-tser79dm9n4l3ci224sndgabgo8u5lun.apps.googleusercontent.com&approval_prompt=force" class="social"><i class="fab fa-google-plus-g"></i></a>
+=======
+                <form action="/SWP/login" method="post">
+                    <h1>Đăng nhập</h1>
+                    <div class="social-container">
+                       
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/SWP/LoginGoogleHandler&response_type=code&client_id=406240029679-tser79dm9n4l3ci224sndgabgo8u5lun.apps.googleusercontent.com&approval_prompt=force" class="social"><i class="fab fa-google-plus-g"></i></a>
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
                        
                     </div>
                     <span>hoặc sử dụng tài khoản của bạn</span>

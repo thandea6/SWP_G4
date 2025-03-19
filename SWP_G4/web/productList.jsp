@@ -153,7 +153,13 @@
                         <a href="addProduct" class="btn">Thêm Sản Phẩm</a>
                         
                     </div>
-<!--                    <a href="lockProductList" class="btn">Sản Phẩm Bị Khóa</a>-->
+
+                    <div class="btn-container" style="margin: 20px 0;">
+                        <a href="lockProductList" class="btn">Sản Phẩm Bị Khóa</a>
+                        <a href="updateAllQuantity.jsp" class="btn">Cập Nhật Số Lượng Kho Hàng</a>
+                    </div>
+
+
                     <form action="productList" method="get" class="search-form">
                         <input required name="txt" class="search-input" type="text" value="${txt}" placeholder="Tìm kiếm theo tên">
                         <select name="sort" class="sort-select">
@@ -189,7 +195,7 @@
                                         <td class="action-links">
                                             <a href="shopProductDetail?ID=${p.id}">Chi Tiết</a><br/>
                                             <a style="color: green" href="updateProduct?ID=${p.id}">Cập Nhật</a> <br/>
-<!--                                            <a style="color: red" href="deleteProduct?ID=${p.id}" onclick="return confirm('Bạn muốn khóa sản phẩm này?')">Khóa</a>-->
+                                            <a style="color: red" href="deleteProduct?ID=${p.id}" onclick="return confirm('Bạn muốn khóa sản phẩm này?')">Khóa</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
