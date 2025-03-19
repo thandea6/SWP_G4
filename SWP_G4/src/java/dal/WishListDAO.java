@@ -16,6 +16,27 @@ import model.WishList;
  * @author GiaKhiem
  */
 public class WishListDAO extends DBContext{
+    
+    public void insertWishList(int shopProductId, int userId) {
+        PreparedStatement stm;
+        ResultSet rs;
+        String sql = "INSERT INTO [dbo].[wishlist]\n"
+                + "           ([userId]\n"
+                + "           ,[shopProductId])\n"
+                + "     VALUES(?,?);";
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, userId);
+            stm.setInt(2, shopProductId);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                WishList wl = new WishList(rs.getInt("wishListId"), rs.getInt("userId"), rs.getInt("shopProductId"), rs.getDate("createdAt"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
     public List<WishList> getAllWishList(int userId) {
         PreparedStatement stm;
         ResultSet rs;

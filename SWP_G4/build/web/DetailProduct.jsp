@@ -567,7 +567,8 @@
                                         <button type="button" value="${color.getColorId()}" name="colorId" class="color-button ${selectedColor == color.getColorId() ? 'selected' : ''}" onclick="selectColor('${color.getColorId()}', this)">${color.colorValue}</button>
                                     </c:forEach>
                                 </div>
-
+                                
+                                
                                 <div class="select-container">
                                     <div class="text-gray-600">Size</div>
                                     <div class="flex items-center mt-2 space-x-2" id="sizeOptions">

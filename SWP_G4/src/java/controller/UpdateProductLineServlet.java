@@ -20,15 +20,13 @@ import model.Category;
 import model.ProductLine;
 
 /**
- *
- * @author admin
+ * @author GiaKhiem
  */
 @WebServlet(name = "UpdateProductLineServlet", urlPatterns = {"/updateProductLine"})
 public class UpdateProductLineServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -130,7 +128,7 @@ public class UpdateProductLineServlet extends HttpServlet {
 
             
             ProductLine productLine = pd.getProductLineById(id);
-             request.setAttribute("id", id);
+            request.setAttribute("id", id);
             request.setAttribute("productLine", productLine);
             request.getRequestDispatcher("updateProductLine.jsp").forward(request, response);
         }
@@ -146,4 +144,4 @@ public class UpdateProductLineServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+    }
