@@ -173,7 +173,11 @@ public class DetailProductServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< HEAD
+    throws ServletException, IOException {
+=======
             throws ServletException, IOException {
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
         HttpSession session = request.getSession();
         List<ShopProduct> list = null;
         List<Category> list1 = null;
@@ -219,6 +223,10 @@ public class DetailProductServlet extends HttpServlet {
         ProductItem pr = pl.getProductByID(id);
         Shop shop = s.getShopByShopProductId(id);
          Rating countRating = r.countRatingByShop(shopp);
+<<<<<<< HEAD
+         
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
         Account a = (Account) session.getAttribute("user");
         if (a == null) {
             request.setAttribute("countcmt", countRating);
@@ -238,6 +246,10 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("dis", dis);
             request.setAttribute("sid", shopp);
             request.setAttribute("rating", rating);
+<<<<<<< HEAD
+                       
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
             request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
         } else {
             UserDAO ud = new UserDAO();
@@ -262,6 +274,10 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("dis", dis);
             request.setAttribute("wishlist", w1);
             request.setAttribute("rating", rating);
+<<<<<<< HEAD
+            
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
             request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
         }
     }

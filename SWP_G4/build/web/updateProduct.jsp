@@ -131,8 +131,8 @@
                 <h1 class="text-2xl font-bold mb-6">Chỉnh sửa sản phẩm</h1>
                 <div class="flex space-x-2">
 <!--                     <a href="discount?productId=${product.id}" class="update-images-btn">Discount</a>-->
-                    <a href="updateQuantity?productId=${product.id}" class="update-images-btn">Cập Nhật Số Lượng Kho Hàng</a>
-                    <a href="ssupdateImages?productId=${product.id}" class="update-images-btn">Cập Nhật Ảnh</a>
+                    <a href="updateQuantity?productId=${product.id}" class="update-images-btn">Cập Nhật Số Lượng</a>
+                    <a href="updateImages?productId=${product.id}" class="update-images-btn">Cập Nhật Ảnh</a>
                 </div>
             </div>
             <%

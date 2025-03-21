@@ -135,5 +135,9 @@ public class User {
         return "User{" + "userId=" + userId + ", fullName=" + fullName + ", address=" + address + ", image=" + image + ", accountBalance=" + accountBalance + ", dob=" + dob + ", gender=" + gender + ", accountId=" + accountId + '}';
     }
 
+    public short getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
 }
