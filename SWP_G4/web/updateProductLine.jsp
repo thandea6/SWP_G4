@@ -85,7 +85,7 @@
     <body class="bg-gray-100">
         <div class="container mx-auto mt-10">
             <div class="menu">
-                <jsp:include page="menu.jsp"></jsp:include>
+                <jsp:include page="./common/menu.jsp"></jsp:include>
                 </div>
                 <div class="content">
                     <h1 class="text-2xl font-bold mb-6">Cập Nhật Dòng Sản Phẩm</h1>
@@ -118,6 +118,7 @@
                         <a href="listProductLine" class="btn btn-default">Quay Về</a>
                         <input type="submit" class="btn btn-success" value="Cập Nhật">
                     </div>
+                    
                 </form>
             </div>
         </div>

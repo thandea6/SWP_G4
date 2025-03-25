@@ -120,7 +120,7 @@
     <body class="bg-gray-100">
         <div class="mx-auto mt-10">
             <div class="flex">
-                <jsp:include page="menu.jsp"></jsp:include>
+                <jsp:include page="./common/menu.jsp"></jsp:include>
                     <div class="w-full bg-white p-6 rounded shadow ml-6">
                         <div class="btn-wrapper">
                             <h1 class="text-2xl font-bold">Danh Sách Loại Sản Phẩm</h1>
