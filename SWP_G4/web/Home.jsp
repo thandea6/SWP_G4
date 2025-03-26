@@ -77,13 +77,13 @@
                             </form>
                         </div>
 
-                        <!-- DMSP -->                                   
+                        <!-- DMSP -->
                     <c:set var="data" value="${requestScope.data}"/>
                     <div class="home-product">
                         <div class="grid">
                             <h3 style="color: green;margin-left: 10px">${requestScope.ms}</h3> 
                             <div class="grid__row">
-                                        
+
                                 <c:forEach items="${data}" var="p">                          
                                     <div class="grid-column-2">
                                         <a class="home-product-item" href="detail?pid=${p.id}&sid=${p.shop.shopId}">
@@ -159,8 +159,7 @@
                                 <li class="pagination-item">
                                     <c:set var="page" value="${requestScope.page}" />
                                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                                      <!--  <a onclick="changePage(${i})" class="pagination-item__link">${i}</a> -->
-                                        <a class="pagination-item__link">${i}</a>
+                                        <a onclick="changePage(${i})" class="pagination-item__link">${i}</a>
                                     </c:forEach>
                                 </li>
                             </ul>

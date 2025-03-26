@@ -41,4 +41,39 @@ public class ImagesDAO extends DBContext{
 
         return list;
     }
+    
+    public List<Images> getAllImagesByshopProductId(int id) {
+        List<Images> imagetList = new ArrayList<>();
+        String sql = "select * from images\n"
+                + "where shopProductId =?";
+
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, id);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Images image = new Images(rs.getInt("imagesId"),
+                            rs.getInt("shopProductId"),
+                            rs.getString("imageLink")
+                    );
+                    imagetList.add(image);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi cơ sở dữ liệu: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return imagetList;
+    }
+    public void addImagesByshopProductId(int shopProductId, String image) {
+        String sql = "INSERT INTO images (shopProductId, imageLink) VALUES (?, ?)";
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, shopProductId);
+            st.setString(2, image);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

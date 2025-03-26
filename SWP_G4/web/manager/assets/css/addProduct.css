@@ -1,0 +1,68 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 13, 2025, 9:01:08 PM
+    Author     : ADMIN
+*/
+
+
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+.menu {
+    width: 250px;
+    margin-right: 20px;
+}
+.content {
+    flex-grow: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.btn-default {
+    background-color: #ccc;
+    color: #333;
+}
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+}
+.message {
+    color: red;
+    margin-bottom: 10px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}

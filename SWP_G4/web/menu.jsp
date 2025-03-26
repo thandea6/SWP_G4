@@ -68,9 +68,11 @@
         <c:if test="${sessionScope.user.roleId==3}" >
             <div class="sidebar" style="background-color: lightyellow">
                 <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                        <img src="${shop.image}" alt="img" class="profile-image"/>
-                    </div>
+                    <a href="/SWP/homeShop">
+    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+        <img src="${shop.image}" alt="img" class="profile-image"/>
+    </div>
+</a>
                     <div class="ml-4">
                         <div class="font-bold">${shop.shopName}</div>
                     </div>
@@ -87,24 +89,6 @@
                         <a href="orderManagement" class="flex items-center text-gray-700" >
                             <i class="fas fa-shopping-cart"></i>
                             Quản Lý Đơn Hàng
-                        </a>
-                    </li>
-                    <li>
-                        <a href="statistical" class="flex items-center text-gray-700" >
-                            <i class="fas fa-lock"></i>
-                            Thống Kê
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="shopchatwithuser" class="flex items-center text-gray-700">
-                            <i class="fas fa-envelope mr-2"></i>
-                            Tin nhắn
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="manageVoucherShop" class="flex items-center text-gray-700">
-                            <i class="fas fa-gifts mr-2"></i>
-                            Quản lý voucher
                         </a>
                     </li>
                     <li>

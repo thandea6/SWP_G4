@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
 import dal.BrandDAO;
 import dal.CommentDAO;
 import dal.DiscountDAO;
+import dal.OrderDetailDAO;
 import dal.RatingDAO;
 import dal.ShopProductDAO;
 import dal.UserDAO;
@@ -20,6 +20,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.awt.Image;
+import java.util.HashSet;
 import java.util.List;
 import model.Account;
 import model.Brand;
@@ -28,6 +30,8 @@ import model.Color;
 import model.Comment;
 import model.Discount;
 import model.Images;
+import model.Order;
+import model.OrderDetail;
 import model.ProductItem;
 import model.Rating;
 import model.Shop;
@@ -38,38 +42,41 @@ import model.WishList;
 
 /**
  *
- * @author GiaKhiem
+ * @author admin
  */
-@WebServlet(name="DetailProductServlet", urlPatterns={"/detail"})
+@WebServlet(name = "DetailProductServlet", urlPatterns = {"/detail"})
 public class DetailProductServlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DetailProductServlet</title>");  
+            out.println("<title>Servlet DetailProductServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DetailProductServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DetailProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -77,7 +84,7 @@ public class DetailProductServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
         List<ShopProduct> list = null;
         List<Category> list1 = null;
@@ -154,10 +161,11 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("wishlist", w1);
             request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
         }
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -165,7 +173,11 @@ public class DetailProductServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< HEAD
     throws ServletException, IOException {
+=======
+            throws ServletException, IOException {
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
         HttpSession session = request.getSession();
         List<ShopProduct> list = null;
         List<Category> list1 = null;
@@ -211,7 +223,10 @@ public class DetailProductServlet extends HttpServlet {
         ProductItem pr = pl.getProductByID(id);
         Shop shop = s.getShopByShopProductId(id);
          Rating countRating = r.countRatingByShop(shopp);
+<<<<<<< HEAD
          
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
         Account a = (Account) session.getAttribute("user");
         if (a == null) {
             request.setAttribute("countcmt", countRating);
@@ -231,7 +246,10 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("dis", dis);
             request.setAttribute("sid", shopp);
             request.setAttribute("rating", rating);
+<<<<<<< HEAD
                        
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
             request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
         } else {
             UserDAO ud = new UserDAO();
@@ -256,13 +274,17 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("dis", dis);
             request.setAttribute("wishlist", w1);
             request.setAttribute("rating", rating);
+<<<<<<< HEAD
             
+=======
+>>>>>>> c8efd27cc5f43b5bce07f6445cf0142944da1b70
             request.getRequestDispatcher("DetailProduct.jsp").forward(request, response);
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

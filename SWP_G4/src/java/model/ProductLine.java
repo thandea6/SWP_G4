@@ -23,7 +23,7 @@ public class ProductLine {
     private int colorId;
     private String colorValue;
     private int sizeId;
-    private int sizeValue;
+    private String sizeValue;
     private int quantity;
     private String categoryName;
     private String brandName;
@@ -35,7 +35,7 @@ public class ProductLine {
 private int totalPriceSold;
     private int totalQuantitySold;
 
-    public ProductLine() {
+    public ProductLine(int aInt, String string, String string1, int aInt1, int aInt2, String string2, String string3, int aInt3, String aDouble) {
     }
  public int getTotalPriceSold() {
         return totalPriceSold;
@@ -104,7 +104,7 @@ private int totalPriceSold;
         this.title =title;
     }
 
-    public ProductLine(int price, String image, String colorValue, int sizeValue, int quantity, String title,String statusValue, int total, double reducedAmount) {
+    public ProductLine(int price, String image, String colorValue, String sizeValue, int quantity, String title,String statusValue, int total, double reducedAmount) {
         this.price = price;
         this.image = image;
         this.colorValue = colorValue;
@@ -116,7 +116,7 @@ private int totalPriceSold;
         this.reducedAmount = reducedAmount;
     }
 
-    public ProductLine(int price, String image, String colorValue, int sizeValue, int quantity, String description, String title, int total, String statusValue) {
+    public ProductLine(int price, String image, String colorValue, String sizeValue, int quantity, String description, String title, int total, String statusValue) {
         this.price = price;
         this.image = image;
         this.colorValue = colorValue;
@@ -156,7 +156,7 @@ private int totalPriceSold;
         this.productLineName = productLineName;
     }
 
-    public ProductLine(int productLineId, int colorId, String colorValue, int sizeId, int sizeValue, int quantity) {
+    public ProductLine(int productLineId, int colorId, String colorValue, int sizeId, String sizeValue, int quantity) {
         this.productLineId = productLineId;
         this.colorId = colorId;
         this.colorValue = colorValue;
@@ -234,11 +234,11 @@ private int totalPriceSold;
         this.colorValue = colorValue;
     }
 
-    public int getSizeValue() {
+    public String getSizeValue() {
         return sizeValue;
     }
 
-    public void setSizeValue(int sizeValue) {
+    public void setSizeValue(String sizeValue) {
         this.sizeValue = sizeValue;
     }
 
@@ -312,11 +312,11 @@ private int totalPriceSold;
         this.colorValue = colorValue;
     }
 
-    public int getSize() {
+    public String getSize() {
         return sizeValue;
     }
 
-    public void setSize(int sizeValue) {
+    public void setSize(String sizeValue) {
         this.sizeValue = sizeValue;
     }
 
