@@ -9,8 +9,8 @@ public class MailSender {
 
     public static void sendEmail(String email, String subject, String content) throws MessagingException {
         // Assuming you have enabled "Less secure app access" on your Google account or configured OAuth2
-        String username = "lytienkhoi1598@gmail.com"; // Your Gmail address
-        String password = "vxol ztlw vqdk vhrh"; // Your Gmail password
+        String username = "tranghg211@gmail.com"; // Your Gmail address
+        String password = "docq mmlm pxnz uwvr"; // Your Gmail password
 
         // Set up the SMTP properties
         Properties props = new Properties();
